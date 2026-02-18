@@ -244,6 +244,8 @@ const deleteConversation = () => {
       'bg-n-slate-2': selected,
       'px-0': compact,
       'px-3': !compact,
+      'ltr:border-l-[3px] rtl:border-r-[3px] ltr:border-l-n-teal-9 rtl:border-r-n-teal-9 bg-n-teal-1 dark:bg-n-teal-2/50':
+        hasUnread && !isActiveChat && !selected,
     }"
     @click="onCardClick"
     @contextmenu="openContextMenu($event)"
@@ -311,7 +313,7 @@ const deleteConversation = () => {
       </div>
       <h4
         class="conversation--user text-sm my-0 mx-2 capitalize pt-0.5 text-ellipsis overflow-hidden whitespace-nowrap flex-1 min-w-0 ltr:pr-16 rtl:pl-16 text-n-slate-12"
-        :class="hasUnread ? 'font-semibold' : 'font-medium'"
+        :class="hasUnread ? 'font-bold' : 'font-medium'"
       >
         {{ currentContact.name }}
       </h4>

@@ -32,6 +32,7 @@ import ConversationBulkActions from './widgets/conversation/conversationBulkActi
 import IntersectionObserver from './IntersectionObserver.vue';
 import TeleportWithDirection from 'dashboard/components-next/TeleportWithDirection.vue';
 import Spinner from 'dashboard/components-next/spinner/Spinner.vue';
+import ConversationCardSkeleton from './widgets/conversation/ConversationCardSkeleton.vue';
 import ConversationResolveAttributesModal from 'dashboard/components-next/ConversationWorkflow/ConversationResolveAttributesModal.vue';
 
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -955,8 +956,14 @@ watch(conversationFilters, (newVal, oldVal) => {
       @chat-tab-change="updateAssigneeTab"
     />
 
+    <div
+      v-if="chatListLoading && !conversationList.length"
+      class="overflow-hidden flex-1"
+    >
+      <ConversationCardSkeleton v-for="i in 8" :key="i" />
+    </div>
     <p
-      v-if="!chatListLoading && !conversationList.length"
+      v-else-if="!chatListLoading && !conversationList.length"
       class="flex overflow-auto justify-center items-center p-4"
     >
       {{ $t('CHAT_LIST.LIST.404') }}
@@ -1016,7 +1023,10 @@ watch(conversationFilters, (newVal, oldVal) => {
           </DynamicScrollerItem>
         </template>
         <template #after>
-          <div v-if="chatListLoading" class="flex justify-center my-4">
+          <div
+            v-if="chatListLoading && conversationList.length"
+            class="flex justify-center my-4"
+          >
             <Spinner class="text-n-brand" />
           </div>
           <p

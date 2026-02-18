@@ -1223,6 +1223,13 @@ export default {
 <template>
   <ReplyBoxBanner :message="message" :is-on-private-note="isOnPrivateNote" />
   <div ref="replyEditor" class="reply-box" :class="replyBoxClass">
+    <div
+      v-if="isOnPrivateNote"
+      class="flex items-center gap-1.5 px-4 py-1.5 text-n-amber-11 text-xs font-medium"
+    >
+      <fluent-icon icon="lock-closed" size="14" />
+      {{ $t('CONVERSATION.VISIBLE_TO_AGENTS') }}
+    </div>
     <ReplyTopPanel
       :mode="replyType"
       :conversation-id="conversationId"
@@ -1443,7 +1450,8 @@ export default {
   @apply relative mb-2 mx-2 border border-n-weak rounded-xl bg-n-solid-1;
 
   &.is-private {
-    @apply bg-n-solid-amber dark:border-n-amber-3/10 border-n-amber-12/5;
+    @apply bg-n-amber-2 dark:bg-n-amber-2 border-n-amber-6
+           ltr:border-l-4 rtl:border-r-4 ltr:border-l-n-amber-9 rtl:border-r-n-amber-9;
   }
 }
 
