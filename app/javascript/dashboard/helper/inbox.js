@@ -1,7 +1,6 @@
 export const INBOX_TYPES = {
   WEB: 'Channel::WebWidget',
   FB: 'Channel::FacebookPage',
-  TWITTER: 'Channel::TwitterProfile',
   TWILIO: 'Channel::TwilioSms',
   WHATSAPP: 'Channel::Whatsapp',
   API: 'Channel::Api',
@@ -22,7 +21,6 @@ export const TWILIO_CHANNEL_MEDIUM = {
 const INBOX_ICON_MAP_FILL = {
   [INBOX_TYPES.WEB]: 'i-ri-global-fill',
   [INBOX_TYPES.FB]: 'i-ri-messenger-fill',
-  [INBOX_TYPES.TWITTER]: 'i-ri-twitter-x-fill',
   [INBOX_TYPES.WHATSAPP]: 'i-ri-whatsapp-fill',
   [INBOX_TYPES.API]: 'i-ri-cloudy-fill',
   [INBOX_TYPES.EMAIL]: 'i-ri-mail-fill',
@@ -38,7 +36,6 @@ const DEFAULT_ICON_FILL = 'i-ri-chat-1-fill';
 const INBOX_ICON_MAP_LINE = {
   [INBOX_TYPES.WEB]: 'i-ri-global-line',
   [INBOX_TYPES.FB]: 'i-ri-messenger-line',
-  [INBOX_TYPES.TWITTER]: 'i-ri-twitter-x-line',
   [INBOX_TYPES.WHATSAPP]: 'i-ri-whatsapp-line',
   [INBOX_TYPES.API]: 'i-ri-cloudy-line',
   [INBOX_TYPES.EMAIL]: 'i-ri-mail-line',
@@ -76,9 +73,6 @@ export const getReadableInboxByType = (type, phoneNumber) => {
     case INBOX_TYPES.FB:
       return 'facebook';
 
-    case INBOX_TYPES.TWITTER:
-      return 'twitter';
-
     case INBOX_TYPES.TWILIO:
       return phoneNumber?.startsWith('whatsapp') ? 'whatsapp' : 'sms';
 
@@ -112,9 +106,6 @@ export const getInboxClassByType = (type, phoneNumber) => {
 
     case INBOX_TYPES.FB:
       return 'brand-facebook';
-
-    case INBOX_TYPES.TWITTER:
-      return 'brand-twitter';
 
     case INBOX_TYPES.TWILIO:
       return phoneNumber?.startsWith('whatsapp')

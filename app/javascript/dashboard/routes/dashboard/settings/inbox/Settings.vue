@@ -239,12 +239,7 @@ export default {
       return this.$t('INBOX_MGMT.ADD.CHANNEL_NAME.PLACEHOLDER');
     },
     textAreaChannels() {
-      if (
-        this.isATwilioChannel ||
-        this.isATwitterInbox ||
-        this.isAFacebookInbox
-      )
-        return true;
+      if (this.isATwilioChannel || this.isAFacebookInbox) return true;
       return false;
     },
     instagramUnauthorized() {

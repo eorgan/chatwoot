@@ -101,7 +101,7 @@ class Message < ApplicationRecord
   enum status: { sent: 0, delivered: 1, read: 2, failed: 3 }
   # [:submitted_email, :items, :submitted_values] : Used for bot message types
   # [:email] : Used by conversation_continuity incoming email messages
-  # [:in_reply_to] : Used to reply to a particular tweet in threads
+  # [:in_reply_to] : Used to reply to a particular message in threads
   # [:deleted] : Used to denote whether the message was deleted by the agent
   # [:external_created_at] : Can specify if the message was created at a different timestamp externally
   # [:external_error : Can specify if the message creation failed due to an error at external API

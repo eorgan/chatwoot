@@ -146,10 +146,6 @@ class Inbox < ApplicationRecord
     channel_type == 'Channel::TwilioSms'
   end
 
-  def twitter?
-    channel_type == 'Channel::TwitterProfile'
-  end
-
   def telegram?
     channel_type == 'Channel::Telegram'
   end

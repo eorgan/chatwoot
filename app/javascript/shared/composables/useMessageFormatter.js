@@ -10,11 +10,9 @@ export const useMessageFormatter = () => {
    * Formats a message based on specified conditions.
    *
    * @param {string} message - The message to be formatted.
-   * @param {boolean} isATweet - Whether the message is a tweet.
    * @param {boolean} isAPrivateNote - Whether the message is a private note.
    * @returns {string} - The formatted message.
    */
-  // TODO: ref:https://github.com/chatwoot/chatwoot/pull/10725#discussion_r1925300874
   const formatMessage = (message, isATweet, isAPrivateNote, linkify) => {
     const messageFormatter = new MessageFormatter(
       message,
@@ -29,7 +27,6 @@ export const useMessageFormatter = () => {
    * Converts a message to plain text.
    *
    * @param {string} message - The message to be converted.
-   * @param {boolean} isATweet - Whether the message is a tweet.
    * @returns {string} - The plain text message.
    */
   const getPlainText = (message, isATweet) => {

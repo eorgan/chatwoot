@@ -17,10 +17,6 @@
   display_name: Facebook Channel
   enabled: true
   help_url: https://chwt.app/hc/fb
-- name: channel_twitter
-  display_name: Twitter Channel
-  enabled: true
-  deprecated: true
 - name: ip_lookup
   display_name: IP Lookup
   enabled: false
@@ -74,10 +70,6 @@
 - name: voice_recorder
   display_name: Voice Recorder
   enabled: true
-- name: mobile_v2
-  display_name: Mobile App V2
-  enabled: false
-  deprecated: true
 - name: channel_website
   display_name: Website Channel
   enabled: true
@@ -105,20 +97,6 @@
   display_name: Audit Logs
   enabled: false
   premium: true
-- name: response_bot
-  display_name: Response Bot
-  enabled: false
-  premium: true
-  deprecated: true
-- name: message_reply_to
-  display_name: Message Reply To
-  enabled: false
-  help_url: https://chwt.app/hc/reply-to
-  deprecated: true
-- name: insert_article_in_reply
-  display_name: Insert Article in Reply
-  enabled: false
-  deprecated: true
 - name: inbox_view
   display_name: Inbox View
   enabled: false
@@ -147,10 +125,6 @@
 - name: chatwoot_v4
   display_name: Chatwoot V4
   enabled: true
-- name: report_v4
-  display_name: Report V4
-  enabled: true
-  deprecated: true
 - name: contact_chatwoot_support_team
   display_name: Contact Chatwoot Support Team
   enabled: true
@@ -180,10 +154,6 @@
   display_name: Captain V2
   enabled: false
   premium: true
-- name: whatsapp_embedded_signup
-  display_name: WhatsApp Embedded Signup
-  enabled: false
-  deprecated: true
 - name: whatsapp_campaign
   display_name: WhatsApp Campaign
   enabled: false
@@ -195,10 +165,6 @@
   display_name: Assignment V2
   enabled: false
   chatwoot_internal: true
-- name: twilio_content_templates
-  display_name: Twilio Content Templates
-  enabled: false
-  deprecated: true
 - name: advanced_search
   display_name: Advanced Search
   enabled: false

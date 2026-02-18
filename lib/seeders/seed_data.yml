@@ -262,7 +262,7 @@ contacts:
       email: "mkeatch2@reuters.test"
       gender: 'female'
       conversations:
-        - channel: Channel::TwitterProfile
+        - channel: Channel::WebWidget
           messages:
           - message_type: incoming
             content: Hi, I think I accidentally deleted some important files. Can you help me recover them?
@@ -319,7 +319,7 @@ contacts:
       email: "bcusworth7@arstechnica.test"
       gender: 'male'
       conversations:
-        - channel: Channel::TwitterProfile
+        - channel: Channel::WebWidget
           messages:
           - message_type: incoming
             content: Hi, I accidentally placed an order for the wrong item. Can I cancel it?

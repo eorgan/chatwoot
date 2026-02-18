@@ -15,22 +15,6 @@ describe('useMessageFormatter', () => {
       expect(result).toContain('class="link"');
     });
 
-    it('should format a tweet correctly', () => {
-      const message = '@user #hashtag';
-      const result = messageFormatter.formatMessage(message, true, false);
-      expect(result).toContain('<a href="http://twitter.com/user"');
-      expect(result).toContain('<a href="https://twitter.com/hashtag/hashtag"');
-    });
-
-    it('should not format mentions and hashtags for private notes', () => {
-      const message = '@user #hashtag';
-      const result = messageFormatter.formatMessage(message, false, true);
-      expect(result).not.toContain('<a href="http://twitter.com/user"');
-      expect(result).not.toContain(
-        '<a href="https://twitter.com/hashtag/hashtag"'
-      );
-    });
-
     it('should disable link formatting when linkify is false', () => {
       const message = 'Check https://example.com and {{user.id}}';
       const result = messageFormatter.formatMessage(

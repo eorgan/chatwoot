@@ -59,12 +59,7 @@ export default {
       return [...timeZoneOptions()];
     },
     isRichEditorEnabled() {
-      if (
-        this.isATwilioChannel ||
-        this.isATwitterInbox ||
-        this.isAFacebookInbox
-      )
-        return false;
+      if (this.isATwilioChannel || this.isAFacebookInbox) return false;
       return true;
     },
   },

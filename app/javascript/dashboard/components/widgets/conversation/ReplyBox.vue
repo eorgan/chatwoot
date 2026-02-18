@@ -216,7 +216,6 @@ export default {
     },
     isReplyButtonDisabled() {
       if (this.isEditorDisabled) return true;
-      if (this.isATwitterInbox) return true;
       if (this.hasAttachments || this.hasRecordedAudio) return false;
 
       return (

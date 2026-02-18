@@ -54,11 +54,6 @@ export const FORMATTING = {
       'redo',
     ],
   },
-  'Channel::TwitterProfile': {
-    marks: [],
-    nodes: [],
-    menu: [],
-  },
   'Channel::TwilioSms': {
     marks: [],
     nodes: [],

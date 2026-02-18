@@ -2,7 +2,6 @@ class SendReplyJob < ApplicationJob
   queue_as :high
 
   CHANNEL_SERVICES = {
-    'Channel::TwitterProfile' => ::Twitter::SendOnTwitterService,
     'Channel::TwilioSms' => ::Twilio::SendOnTwilioService,
     'Channel::Line' => ::Line::SendOnLineService,
     'Channel::Telegram' => ::Telegram::SendOnTelegramService,

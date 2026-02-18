@@ -19,7 +19,6 @@ class Seeders::InboxSeeder
   def perform!
     seed_website_inbox
     seed_facebook_inbox
-    seed_twitter_inbox
     seed_whatsapp_inbox
     seed_sms_inbox
     seed_email_inbox
@@ -37,12 +36,6 @@ class Seeders::InboxSeeder
     channel = Channel::FacebookPage.create!(account: @account, user_access_token: SecureRandom.hex, page_access_token: SecureRandom.hex,
                                             page_id: SecureRandom.hex)
     Inbox.create!(channel: channel, account: @account, name: "#{@company_data['name']} Facebook")
-  end
-
-  def seed_twitter_inbox
-    channel = Channel::TwitterProfile.create!(account: @account, twitter_access_token: SecureRandom.hex,
-                                              twitter_access_token_secret: SecureRandom.hex, profile_id: '123')
-    Inbox.create!(channel: channel, account: @account, name: "#{@company_data['name']} Twitter")
   end
 
   def seed_whatsapp_inbox

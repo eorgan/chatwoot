@@ -84,19 +84,10 @@ RSpec.describe Macros::ExecutionService, type: :service do
       end
     end
 
-    context 'when conversation is a tweet' do
-      before { allow(service).to receive(:conversation_a_tweet?).and_return(true) }
-
-      it 'does not create a new message' do
-        expect do
-          service.send(:add_private_note, ['Test private note'])
-        end.not_to change(Message, :count)
-      end
-    end
   end
 
   describe '#send_message' do
-    context 'when conversation is not a tweet' do
+    context 'when conversation is valid' do
       it 'creates a new public message' do
         expect do
           service.send(:send_message, ['Test message'])
@@ -108,15 +99,6 @@ RSpec.describe Macros::ExecutionService, type: :service do
       end
     end
 
-    context 'when conversation is a tweet' do
-      before { allow(service).to receive(:conversation_a_tweet?).and_return(true) }
-
-      it 'does not create a new message' do
-        expect do
-          service.send(:send_message, ['Test message'])
-        end.not_to change(Message, :count)
-      end
-    end
   end
 
   describe '#send_attachment' do
@@ -125,9 +107,7 @@ RSpec.describe Macros::ExecutionService, type: :service do
       macro.save!
     end
 
-    context 'when conversation is not a tweet and macro has files attached' do
-      before { allow(service).to receive(:conversation_a_tweet?).and_return(false) }
-
+    context 'when macro has files attached' do
       it 'creates a new message with attachments' do
         expect do
           service.send(:send_attachment, [macro.files.first.blob_id])
@@ -135,16 +115,6 @@ RSpec.describe Macros::ExecutionService, type: :service do
 
         message = Message.last
         expect(message.attachments).to be_present
-      end
-    end
-
-    context 'when conversation is a tweet or macro has no files attached' do
-      before { allow(service).to receive(:conversation_a_tweet?).and_return(true) }
-
-      it 'does not create a new message' do
-        expect do
-          service.send(:send_attachment, [macro.files.first.blob_id])
-        end.not_to change(Message, :count)
       end
     end
   end

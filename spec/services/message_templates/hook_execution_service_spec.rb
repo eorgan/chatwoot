@@ -43,20 +43,6 @@ describe MessageTemplates::HookExecutionService do
       expect(email_collect_service).to have_received(:perform)
     end
 
-    it 'will not call ::MessageTemplates::Template::Greeting if its a tweet conversation' do
-      twitter_channel = create(:channel_twitter_profile)
-      twitter_inbox = create(:inbox, channel: twitter_channel)
-      # ensure greeting hook is enabled and greeting_message is present
-      twitter_inbox.update(greeting_enabled: true, greeting_message: 'Hi, this is a greeting message')
-
-      conversation = create(:conversation, inbox: twitter_inbox, additional_attributes: { type: 'tweet' })
-      greeting_service = double
-      allow(MessageTemplates::Template::Greeting).to receive(:new).and_return(greeting_service)
-      allow(greeting_service).to receive(:perform).and_return(true)
-
-      message = create(:message, conversation: conversation)
-      expect(MessageTemplates::Template::Greeting).not_to have_received(:new).with(conversation: message.conversation)
-    end
   end
 
   context 'when it is a first message from web widget' do
@@ -253,21 +239,5 @@ describe MessageTemplates::HookExecutionService do
       expect(out_of_office_service).not_to have_received(:perform)
     end
 
-    it 'will not call ::MessageTemplates::Template::OutOfOffice if its a tweet conversation' do
-      twitter_channel = create(:channel_twitter_profile)
-      twitter_inbox = create(:inbox, channel: twitter_channel)
-      twitter_inbox.update(working_hours_enabled: true, out_of_office_message: 'We are out of office')
-
-      conversation = create(:conversation, inbox: twitter_inbox, additional_attributes: { type: 'tweet' })
-
-      out_of_office_service = double
-
-      allow(MessageTemplates::Template::OutOfOffice).to receive(:new).and_return(out_of_office_service)
-      allow(out_of_office_service).to receive(:perform).and_return(false)
-
-      message = create(:message, conversation: conversation)
-      expect(MessageTemplates::Template::OutOfOffice).not_to have_received(:new).with(conversation: message.conversation)
-      expect(out_of_office_service).not_to receive(:perform)
-    end
   end
 end

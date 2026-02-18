@@ -17,11 +17,6 @@ describe('#Inbox Helpers', () => {
         'brand-facebook'
       );
     });
-    it('should return correct class for  twitter profile', () => {
-      expect(getInboxClassByType('Channel::TwitterProfile')).toEqual(
-        'brand-twitter'
-      );
-    });
     it('should return correct class for twilio sms', () => {
       expect(getInboxClassByType('Channel::TwilioSms', '')).toEqual(
         'brand-sms'

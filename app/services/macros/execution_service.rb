@@ -28,8 +28,6 @@ class Macros::ExecutionService < ActionService
   end
 
   def add_private_note(message)
-    return if conversation_a_tweet?
-
     params = { content: message[0], private: true }
 
     # Added reload here to ensure conversation us persistent with the latest updates
@@ -38,8 +36,6 @@ class Macros::ExecutionService < ActionService
   end
 
   def send_message(message)
-    return if conversation_a_tweet?
-
     params = { content: message[0], private: false }
 
     # Added reload here to ensure conversation us persistent with the latest updates
@@ -48,8 +44,6 @@ class Macros::ExecutionService < ActionService
   end
 
   def send_attachment(blob_ids)
-    return if conversation_a_tweet?
-
     return unless @macro.files.attached?
 
     blobs = ActiveStorage::Blob.where(id: blob_ids)

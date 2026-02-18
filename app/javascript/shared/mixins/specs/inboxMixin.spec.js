@@ -41,12 +41,6 @@ describe('inboxMixin', () => {
     expect(wrapper.vm.isAPIInbox).toBe(true);
   });
 
-  it('isATwitterInbox returns true if channel type is twitter', () => {
-    const Component = getComponentConfigForInbox('Channel::TwitterProfile');
-    const wrapper = shallowMount(Component);
-    expect(wrapper.vm.isATwitterInbox).toBe(true);
-  });
-
   it('isAFacebookInbox returns true if channel type is Facebook', () => {
     const Component = getComponentConfigForInbox('Channel::FacebookPage');
     const wrapper = shallowMount(Component);
@@ -139,17 +133,6 @@ describe('inboxMixin', () => {
     expect(wrapper.vm.isAnEmailChannel).toBe(true);
   });
 
-  it('isTwitterInboxTweet returns true if Twitter channel type is tweet', () => {
-    const Component = getComponentConfigForChat({
-      channel_type: 'Channel::TwitterProfile',
-      additional_attributes: {
-        type: 'tweet',
-      },
-    });
-    const wrapper = shallowMount(Component);
-    expect(wrapper.vm.isTwitterInboxTweet).toBe(true);
-  });
-
   it('twilioBadge returns string sms if channel type is Twilio and medium is sms', () => {
     const Component = getComponentConfigForInbox('Channel::TwilioSms', {
       medium: 'sms',
@@ -159,25 +142,11 @@ describe('inboxMixin', () => {
     expect(wrapper.vm.twilioBadge).toBe('sms');
   });
 
-  it('twitterBadge returns string twitter-tweet if Twitter channel type is tweet', () => {
-    const Component = getComponentConfigForChat({
-      id: 1,
-      additional_attributes: {
-        type: 'tweet',
-      },
-    });
-
-    const wrapper = shallowMount(Component);
-    expect(wrapper.vm.isTwitterInboxTweet).toBe(true);
-    expect(wrapper.vm.twitterBadge).toBe('twitter-tweet');
-  });
-
   describe('Badges', () => {
-    it('inboxBadge returns string Channel::Telegram if isATwilioChannel and isATwitterInbox is false', () => {
+    it('inboxBadge returns string Channel::Telegram for Telegram channel', () => {
       const Component = getComponentConfigForInbox('Channel::Telegram');
       const wrapper = shallowMount(Component);
       expect(wrapper.vm.isATwilioChannel).toBe(false);
-      expect(wrapper.vm.isATwitterInbox).toBe(false);
       expect(wrapper.vm.channelType).toBe('Channel::Telegram');
     });
 
@@ -185,12 +154,6 @@ describe('inboxMixin', () => {
       const Component = getComponentConfigForInbox('Channel::Whatsapp');
       const wrapper = shallowMount(Component);
       expect(wrapper.vm.inboxBadge).toBe('whatsapp');
-    });
-
-    it('inboxBadge returns the twitterBadge when isATwitterInbox is true', () => {
-      const Component = getComponentConfigForInbox('Channel::TwitterProfile');
-      const wrapper = shallowMount(Component);
-      expect(wrapper.vm.inboxBadge).toBe('twitter-dm');
     });
 
     it('inboxBadge returns the facebookBadge when isAFacebookInbox is true', () => {

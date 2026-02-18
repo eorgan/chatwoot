@@ -30,12 +30,7 @@ export default {
       uiFlags: 'inboxes/getUIFlags',
     }),
     textAreaChannels() {
-      if (
-        this.isATwilioChannel ||
-        this.isATwitterInbox ||
-        this.isAFacebookInbox
-      )
-        return true;
+      if (this.isATwilioChannel || this.isAFacebookInbox) return true;
       return false;
     },
   },

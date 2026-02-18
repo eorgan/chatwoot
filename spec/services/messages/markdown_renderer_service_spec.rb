@@ -495,25 +495,6 @@ RSpec.describe Messages::MarkdownRendererService, type: :service do
       end
     end
 
-    context 'when channel is Channel::TwitterProfile' do
-      let(:channel_type) { 'Channel::TwitterProfile' }
-
-      it 'strips all markdown like SMS' do
-        content = '**bold** [link](https://example.com)'
-        result = described_class.new(content, channel_type).render
-        expect(result).to include('bold')
-        expect(result).to include('link https://example.com')
-        expect(result).not_to include('**')
-        expect(result).not_to include('[')
-      end
-
-      it 'preserves URLs from links' do
-        content = '[Reset password](https://example.com/reset)'
-        result = described_class.new(content, channel_type).render
-        expect(result).to eq('Reset password https://example.com/reset')
-      end
-    end
-
     context 'when testing all formatting types' do
       let(:channel_type) { 'Channel::Whatsapp' }
 
