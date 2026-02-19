@@ -103,3 +103,8 @@ CLAUDE.local.md
 .pnpm-store/*
 local/
 Procfile.worktree
+
+# Playwright
+e2e/.auth/
+test-results/
+playwright-report/

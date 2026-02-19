@@ -18,7 +18,10 @@
     "story:dev": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview",
-    "sync:i18n": "bin/sync_i18n_file_change"
+    "sync:i18n": "bin/sync_i18n_file_change",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed"
   },
   "size-limit": [
     {
@@ -145,6 +148,7 @@
     "size-limit": "^8.2.4",
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.21",
+    "@playwright/test": "^1.50.0",
     "vite-plugin-ruby": "^5.0.0",
     "vitest": "3.0.5"
   },
